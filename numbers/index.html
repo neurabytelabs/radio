@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Radio from Numbers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%2314100d%22/%3E%3Cpath d=%22M2 9h2l2-5 2 9 2-7 2 3h2%22 fill=%22none%22 stroke=%22%23f2a53f%22 stroke-width=%221.6%22/%3E%3C/svg%3E">
+    <meta
+      name="description"
+      content="An 89-second explainer film for Radio from Samples: how a song hides in a fast wave, and how a receiver gets it back."
+    />
+    <meta property="og:title" content="Radio from Numbers" />
+    <meta
+      property="og:description"
+      content="An 89-second explainer film for Radio from Samples."
+    />
+    <meta property="og:image" content="thumb-hero.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        --paper: #f3e9d2;
+        --paper2: #eaddbf;
+        --ink: #2b2a28;
+        --ink2: #5a544c;
+        --dim: #857b6c;
+        --line: #d6c6a4;
+        --coral: #e8735a;
+        --coralD: #b84c36;
+        --mustard: #e9b44c;
+        --teal: #3e9e97;
+        --tealD: #2a7771;
+        --desk: #22211f;
+        --hand: "Patrick Hand", "Comic Neue", cursive;
+        --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, monospace;
+        color-scheme: light;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        background: var(--paper);
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font: 16px/1.6 var(--body);
+      }
+      img {
+        max-width: 100%;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding-inline: 16px;
+        padding-block: 0 64px;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-weight: 400;
+        text-wrap: balance;
+      }
+      h2 {
+        font-family: var(--hand);
+        font-size: 40px;
+        line-height: 1.1;
+      }
+      h3 {
+        font-family: var(--body);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+      p {
+        margin: 0;
+      }
+      a {
+        color: inherit;
+      }
+      .hero {
+        background: var(--desk);
+        color: var(--paper);
+        padding-block: 28px 34px;
+        margin-bottom: 40px;
+      }
+      .hero .wrap {
+        padding-block: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: baseline;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--mustard);
+      }
+      .sitenav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .sitenav a {
+        color: #b5a98f;
+        text-decoration: none;
+        border-bottom: 1px solid #5a544c;
+      }
+      .sitenav a:hover {
+        color: var(--mustard);
+        border-color: var(--mustard);
+      }
+      h1 {
+        font-family: var(--hand);
+        font-size: clamp(44px, 7vw, 76px);
+        line-height: 1;
+      }
+      .lede {
+        max-width: 68ch;
+        color: #d9cdb3;
+      }
+      .lede a {
+        color: var(--paper);
+      }
+      .player {
+        border-radius: 14px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      }
+      video {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 22px;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: #b5a98f;
+      }
+      .meta b {
+        color: var(--paper);
+        font-weight: 500;
+      }
+      section {
+        padding-block: 34px;
+        border-top: 2px dashed var(--line);
+      }
+      section:first-of-type {
+        border-top: 0;
+      }
+      .sh {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .sh span {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--dim);
+      }
+      .two {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+      }
+      .card {
+        background: var(--paper2);
+        border-radius: 4px;
+        padding: 18px 20px;
+        box-shadow: 4px 6px 0 rgba(43, 42, 40, 0.12);
+        position: relative;
+      }
+      .card p + p {
+        margin-top: 10px;
+      }
+      .core {
+        font-family: var(--hand);
+        font-size: 30px;
+        line-height: 1.25;
+        max-width: 40ch;
+      }
+      .core em {
+        font-style: normal;
+        color: var(--coralD);
+      }
+      .chain {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-top: 14px;
+        font-family: var(--mono);
+        font-size: 13px;
+      }
+      .chain span {
+        background: var(--paper);
+        border: 1.5px solid var(--ink);
+        border-radius: 3px;
+        padding: 3px 9px;
+      }
+      .chain i {
+        font-style: normal;
+        color: var(--dim);
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .sw {
+        height: 74px;
+        border-radius: 3px;
+        display: flex;
+        align-items: flex-end;
+        padding: 8px 10px;
+        font-family: var(--mono);
+        font-size: 12px;
+        box-shadow: 3px 5px 0 rgba(43, 42, 40, 0.14);
+      }
+      ul.rules {
+        margin: 0;
+        padding-left: 20px;
+        display: grid;
+        gap: 6px;
+      }
+      ul.rules li {
+        max-width: 70ch;
+      }
+      figure {
+        margin: 0;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 4px 6px 0 rgba(43, 42, 40, 0.14);
+      }
+      figcaption {
+        font-size: 14px;
+        color: var(--ink2);
+        margin-top: 8px;
+      }
+      .board {
+        display: grid;
+        gap: 22px;
+      }
+      .scene {
+        display: grid;
+        grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+        gap: 22px;
+        background: var(--paper2);
+        border-radius: 4px;
+        padding: 16px;
+        box-shadow: 4px 6px 0 rgba(43, 42, 40, 0.12);
+      }
+      .scene img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+      }
+      .scene .n {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .scene .n b {
+        font-family: var(--hand);
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 1;
+      }
+      .scene .n code {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--dim);
+      }
+      dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 6px 14px;
+        font-size: 14.5px;
+      }
+      dt {
+        font-weight: 700;
+        color: var(--ink2);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding-top: 3px;
+      }
+      dd {
+        margin: 0;
+      }
+      dd.vo {
+        font-family: var(--hand);
+        font-size: 21px;
+        line-height: 1.3;
+        color: var(--ink);
+      }
+      .tmap {
+        display: grid;
+        gap: 10px;
+      }
+      .tr {
+        display: grid;
+        grid-template-columns: 90px minmax(0, 1fr);
+        gap: 14px;
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .tr code {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--coralD);
+      }
+      .note {
+        background: var(--paper2);
+        border-left: 4px solid var(--mustard);
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        font-size: 14.5px;
+        max-width: 80ch;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14.5px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+      td code,
+      li code {
+        font-family: var(--mono);
+        font-size: 0.88em;
+      }
+      .tw {
+        overflow-x: auto;
+      }
+      .files {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .files span {
+        font-family: var(--mono);
+        font-size: 13px;
+        background: var(--paper2);
+        padding: 4px 10px;
+        border-radius: 3px;
+      }
+      footer {
+        font-size: 13px;
+        color: var(--dim);
+        padding-top: 24px;
+        border-top: 2px dashed var(--line);
+      }
+      @media (max-width: 820px) {
+        .two,
+        .scene {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .swatches {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        dl {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        dt {
+          padding-top: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <div class="topline">
+          <div class="eyebrow">$ ./listen --antenna</div>
+          <nav class="sitenav" aria-label="Pages">
+            <a href="../">← Radio from Samples: the live radio</a
+            ><a href="https://github.com/neurabytelabs/radio">Source</a>
+          </nav>
+        </div>
+        <h1>Radio from Numbers</h1>
+        <p class="lede">
+          An 89-second explainer for <a href="../">Radio from Samples</a>. A
+          small pixel radio named Hertz shows how a song hides in a fast wave,
+          and how a receiver gets it back.
+        </p>
+        <div class="player">
+          <video
+            id="film"
+            controls
+            playsinline
+            muted
+            preload="metadata"
+            poster="thumb-hero.jpg"
+          >
+            <source src="radio-from-numbers.mp4" type="video/mp4" />
+            <track
+              kind="captions"
+              srclang="en"
+              label="English (separate track)"
+              src="radio-from-numbers.vtt"
+            />
+          </video>
+        </div>
+        <div class="meta">
+          <span><b>1920×1080</b> · 24 fps</span
+          ><span><b>89.5 s</b> · 7 scenes</span
+          ><span>captions burned in + optional text track</span
+          ><span>silent cut (see sound plan)</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <div class="sh">
+          <h2>Concept</h2>
+          <span
+            >topic: how a radio works · audience: curious adults who build
+            things, no electronics background</span
+          >
+        </div>
+        <div class="two">
+          <div class="card">
+            <h3>The one idea</h3>
+            <p class="core">
+              A station hides a song in <em>how a fast wave changes</em>. A
+              radio picks one wave, moves it to where a sharp filter waits, and
+              measures that change.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Cause and effect</h3>
+            <p>
+              Whatever the transmitter does to the carrier is exactly what the
+              receiver has to measure. Change the height (AM) and you measure
+              height; change the spacing (FM) and you can throw height away,
+              taking static and the weaker station with it.
+            </p>
+            <div class="chain">
+              <span>antenna</span><i>→</i><span>× oscillator</span><i>→</i
+              ><span>filter at 24 kHz</span><i>→</i><span>detector</span><i>→</i
+              ><span>speaker</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Visual system</h2>
+          <span
+            >torn paper, dry gouache, crayon and pencil on a stage inside a
+            terminal window</span
+          >
+        </div>
+        <div class="swatches">
+          <div class="sw" style="background: #e8735a; color: #2b2a28">
+            coral #E8735A
+          </div>
+          <div class="sw" style="background: #e9b44c; color: #2b2a28">
+            mustard #E9B44C
+          </div>
+          <div class="sw" style="background: #3e9e97; color: #f3e9d2">
+            teal #3E9E97
+          </div>
+          <div
+            class="sw"
+            style="
+              background: #f3e9d2;
+              color: #2b2a28;
+              border: 1px solid #d6c6a4;
+            "
+          >
+            cream #F3E9D2
+          </div>
+          <div class="sw" style="background: #2b2a28; color: #f3e9d2">
+            charcoal #2B2A28
+          </div>
+        </div>
+        <div class="two">
+          <ul class="rules">
+            <li>
+              <b>Materials.</b> Solid objects are torn paper: edges jittered
+              every 9 px, a cream fibre along the tear, a gouache blotch texture
+              multiplied into the fill, and a soft cardboard shadow (5, 8, blur
+              14).
+            </li>
+            <li>
+              <b>Lines.</b> Signals are crayon: a waxy speckled pattern stroked
+              in two offset passes. Diagrams and axes are pencil: a firm line
+              plus a faint ghost.
+            </li>
+            <li>
+              <b>Boil.</b> Every object shifts 1–2 px and a fraction of a degree
+              on a new pose every 3 frames (8 per second). Grain boils with
+              them.
+            </li>
+          </ul>
+          <ul class="rules">
+            <li>
+              <b>Colour roles.</b> Coral is the song, and the stronger station
+              at the end. Teal is the carrier and the other tower. Mustard marks
+              tools: filter glow, oscillator, limiter, tags. Charcoal is
+              hardware.
+            </li>
+            <li>
+              <b>Frame.</b> A dark terminal window holds a cream paper stage
+              with a mustard floor. The film opens and closes on the same shell
+              prompt.
+            </li>
+            <li>
+              <b>Type.</b> Patrick Hand for the few labels, JetBrains Mono for
+              the terminal, Atkinson Hyperlegible for captions. Labels never
+              repeat the narration.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Character sheet</h2>
+          <span
+            >Hertz, an original pixel radio: 10 × 8 body, black eyes, receiving
+            antenna</span
+          >
+        </div>
+        <figure>
+          <img
+            src="character-sheet.jpg"
+            alt="Character sheet for Hertz, a square coral pixel mascot with black eyes and an antenna, shown in neutral, speaking, blink, pointing, walking, hears-west (teal glow), hears-east (coral glow) and curious poses, with a construction grid and the five palette swatches."
+            loading="lazy"
+          />
+          <figcaption>
+            Same silhouette, scale and proportions in every shot (10 px per
+            pixel on the floor, 7 px in the car). The mouth is driven by the
+            voiceover's loudness frame by frame; blinks every 3.5 s; the antenna
+            ball takes the colour of the station Hertz is locked onto.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Storyboard</h2>
+          <span
+            >seven scenes · each adds one new piece of understanding · click a
+            frame to jump there</span
+          >
+        </div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Transition map</h2>
+          <span
+            >no hard cuts: the last object of each scene becomes the first
+            object of the next</span
+          >
+        </div>
+        <div class="tmap">
+          <div class="tr">
+            <code>0 → 1</code>
+            <p>
+              The typed command wakes the stage: a spotlight opens on the
+              antenna.
+            </p>
+          </div>
+          <div class="tr">
+            <code>1 → 2</code>
+            <p>
+              The cloud of sample squares regroups into a single crayon line.
+              The numbers become the song.
+            </p>
+          </div>
+          <div class="tr">
+            <code>2 → 3</code>
+            <p>
+              The AM wave shrinks into the tip of a rising transmitter, and
+              comes back out as rings.
+            </p>
+          </div>
+          <div class="tr">
+            <code>3 → 4</code>
+            <p>
+              The tangled antenna line straightens and stretches into the
+              frequency axis; its bumps grow into station peaks.
+            </p>
+          </div>
+          <div class="tr">
+            <code>4 → 5</code>
+            <p>
+              The coral peak lifts out of the filter window and unrolls into the
+              wave the detector receives.
+            </p>
+          </div>
+          <div class="tr">
+            <code>5 → 6</code>
+            <p>
+              The song outline flattens and thickens into the road. Hertz is
+              standing on it when the car pulls up.
+            </p>
+          </div>
+          <div class="tr">
+            <code>6 → 7</code>
+            <p>
+              The road scene shrinks away and releases five paper tiles: the
+              whole receiver as one chain.
+            </p>
+          </div>
+          <div class="tr">
+            <code>7 → end</code>
+            <p>
+              The tiles fly into Hertz's antenna, the ball glows, the spotlight
+              closes to the prompt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Sound plan</h2>
+          <span
+            >voice first; everything else ducks 7–10 dB under it · loudness −16
+            LUFS</span
+          >
+        </div>
+        <p class="note">
+          The film on this page is published without its soundtrack: the
+          narration voice is not licensed for redistribution, and the voice,
+          music and receiver audio were mixed into one track. The captions carry
+          the full narration. The table describes the original mix. To hear the
+          receiver itself, switch on <a href="../">the live radio</a>.
+        </p>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Layer</th>
+                <th>What</th>
+                <th>Where</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Voice</td>
+                <td>
+                  Warm neutral English voice, slowed to 139 wpm with 0.6 s
+                  sentence gaps
+                </td>
+                <td>throughout</td>
+              </tr>
+              <tr>
+                <td>Music</td>
+                <td>
+                  Felt pad on Am–F–C–G at 92 bpm. The plucked melody is the same
+                  A-minor pentatonic figure the WEST AM transmitter broadcasts,
+                  so the tune you hear in scene 2 is the song the detector
+                  recovers in scene 5. A semitone rub adds tension in scene 3; a
+                  soft kick and shaker drive scene 6; the recap resolves to C
+                  major.
+                </td>
+                <td>1.4 s → end</td>
+              </tr>
+              <tr>
+                <td>The real receiver</td>
+                <td>
+                  The actual DSP from the radio page, run offline on a schedule:
+                  static from the crystal set (1), a dial sweep across the band
+                  (3), the tuning landing on WEST (4), the demodulated song (5),
+                  then AM static rising as the car drives away, FM without and
+                  with the limiter, and the capture snap from drums to pad at
+                  the midpoint (6).
+                </td>
+                <td>scenes 1, 3–6</td>
+              </tr>
+              <tr>
+                <td>Tactile</td>
+                <td>
+                  Key clicks on the prompt; paper slaps on every tag and tile;
+                  crayon scribble when lines draw; ratchet on the oscillator
+                  knob; tiny ticks as the diode passes peaks; a paper thump for
+                  the limiter; a click and chime at the capture snap; whooshes
+                  on the big transitions.
+                </td>
+                <td>synced to the frames that cause them</td>
+              </tr>
+              <tr>
+                <td>Ambience</td>
+                <td>Low room tone, a soft engine burble in the car.</td>
+                <td>under everything</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="sh">
+          <h2>Technical implementation</h2>
+          <span>every frame and sound generated from code</span>
+        </div>
+        <div class="two">
+          <ul class="rules">
+            <li>
+              <b>Renderer.</b> One HTML canvas at 1920×1080 with a pure function
+              <code>renderFrame(n)</code>. Every motion is an analytic function
+              of time, so frames render in any order and in parallel.
+            </li>
+            <li>
+              <b>Timing.</b> Scene and beat times are read from the voiceover:
+              each sentence was synthesized separately, measured, and placed;
+              visual beats key to sentence starts or to a word's position inside
+              the sentence.
+            </li>
+            <li>
+              <b>Textures.</b> Paper grain, gouache blotches and crayon patterns
+              are procedural and seeded, generated once; torn edges are cached
+              per object.
+            </li>
+            <li>
+              <b>Boil.</b> Offsets come from a hash of (object, frame ÷ 3), so
+              the wobble is identical on every re-render.
+            </li>
+          </ul>
+          <ul class="rules">
+            <li>
+              <b>Frames.</b> Headless Chromium, four workers, 2 149 PNG frames.
+            </li>
+            <li>
+              <b>Audio.</b> NumPy synthesis and mix at 48 kHz, sidechain-style
+              ducking from the voice envelope, <code>loudnorm</code> to −16 LUFS
+              / −1.5 dBTP.
+            </li>
+            <li>
+              <b>Encode.</b> H.264 High, yuv420p, 24 fps; captions burned in and
+              shipped as WebVTT.
+            </li>
+            <li>
+              <b>Accuracy.</b> The receiver audio in the original mix is the
+              project's own demodulator, not a sample. The mixer, detector,
+              limiter and capture behaviour shown match what the code does.
+            </li>
+          </ul>
+        </div>
+        <div class="files">
+          <span>radio-from-numbers.mp4</span><span>radio-from-numbers.vtt</span
+          ><span>character-sheet.jpg</span
+          ><span>thumb-1.jpg … thumb-7.jpg</span>
+        </div>
+      </section>
+
+      <footer>
+        Part of
+        <a href="https://github.com/neurabytelabs/radio">neurabytelabs/radio</a>
+        · MIT licence · a NeuraByte Labs experiment.
+      </footer>
+    </main>
+
+    <script>
+      const SCENES = [
+        {
+          purpose:
+            "A radio receives nothing but numbers, and the song is somewhere inside them.",
+          visual:
+            "Dark terminal; a typed command opens a spotlight on a cream stage. Hertz stands beside a charcoal antenna. Sample squares rain onto its teal tip and gather into a cloud; a paper counter tallies them. A coral note glows inside the cloud.",
+          motion:
+            "Entrance: prompt types, light opens. Primary: samples fall, stream off the tip, hover. Secondary: counter spins, cloud turns coral around the note, Hertz tilts with a pencil question mark. Exit: the antenna sinks into the floor.",
+          sound:
+            "Key clicks, a rising whoosh for the light, glassy plucks as samples land, the crystal set's own static underneath.",
+          transition:
+            "The squares regroup into one slow crayon line: the numbers become the song.",
+          name: "Hook",
+          t0: 0,
+          t1: 12.599,
+          vo: "Every second, this antenna hands the radio one hundred ninety-two thousand numbers. Somewhere inside them is a song. How do we get it out?",
+        },
+        {
+          purpose:
+            "Sound travels by changing the height of a fast carrier: that is AM.",
+          visual:
+            "The coral song line; a teal carrier draws in beneath it; the song slides down to become the carrier's upper edge and a mirror appears below. A mustard 'AM' tag.",
+          motion:
+            "Entrance: Hertz walks left and points. Primary: the carrier draws left to right, then its height starts following the song. Secondary: 'song' and 'carrier' labels fade. Exit: tag flies off, a transmitter rises at the right.",
+          sound:
+            "The melody enters as plucks (the same tune WEST AM broadcasts), crayon scribble as lines draw, paper slap for the tag.",
+          transition: "The whole AM wave shrinks into the transmitter's tip.",
+          name: "Familiar world",
+          t0: 12.599,
+          t1: 24.099,
+          vo: "A song is a slow wiggle. To travel far, it rides a fast wave called the carrier, and pushes its height up and down. That's AM.",
+        },
+        {
+          purpose:
+            "Every station and the static arrive together; the antenna can only add them.",
+          visual:
+            "Transmitter rings; a receiving antenna; four crayon waves of different pitch (teal, coral, mustard, charcoal) from four directions; pencil static flecks; one tangled pencil line leaving the antenna.",
+          motion:
+            "Entrance: antenna rises, Hertz steps up to it. Primary: waves arrive in turn and converge on the tip. Secondary: static multiplies, '+' marks appear. Exit: waves fade, towers sink.",
+          sound:
+            "A dial sweep across the band from the real receiver; the pad picks up a semitone rub.",
+          transition:
+            "The tangled line straightens and stretches into a frequency axis.",
+          name: "Disruption",
+          t0: 24.099,
+          t1: 32.91,
+          vo: "But the air is crowded. Four stations and the static arrive together, and the antenna adds them into one tangled line.",
+        },
+        {
+          purpose:
+            "In frequency, stations are separate peaks. Multiplying by an oscillator slides the wanted one to a fixed 24 kHz filter.",
+          visual:
+            "Four torn-paper peaks on a pencil axis; a mustard oscillator badge with a sine and ×; a charcoal filter window with a '24 kHz' tag.",
+          motion:
+            "Entrance: peaks grow from the line's bumps. Primary: the window drops in and the whole spectrum slides left until the coral peak sits inside it. Secondary: Hertz turns the oscillator; everything outside the window dims. Exit: the others fade.",
+          sound:
+            "Steady low plucks; ratchet clicks on the knob; the real receiver's tuning lands on WEST.",
+          transition: "The coral peak lifts out and unrolls into a wave.",
+          name: "Mechanism",
+          t0: 32.91,
+          t1: 47.131,
+          vo: "Spread that line out by frequency, and each station becomes a peak. Multiply by a local oscillator, and the peak you want slides to twenty-four kilohertz, where one sharp filter is waiting.",
+        },
+        {
+          purpose:
+            "A diode keeps the tops and a capacitor holds them; the outline they trace is the original song.",
+          visual:
+            "The teal wave with a coral outline; a diode symbol on a dashed gate, a capacitor below; past the gate only the upper halves remain and a coral line joins the peaks. The scene-2 song descends as a dashed ghost and lands exactly on it. A paper speaker.",
+          motion:
+            "Entrance: Hertz jumps up onto the wave. Primary: Hertz walks the tops; the outline draws itself past the gate. Secondary: the ghost lands, the outline glows, notes leave the speaker. Exit: wave and parts fade.",
+          sound:
+            "The actual demodulated WEST AM song rises in the gaps; tiny ticks as peaks pass the diode; a chime when the ghost matches.",
+          transition: "The song outline flattens and thickens into a road.",
+          name: "Discovery",
+          t0: 47.131,
+          t1: 59.433,
+          vo: "Now follow the tops. A diode keeps each peak, a capacitor holds it, and the outline it draws is the song. The sound was the change all along.",
+        },
+        {
+          purpose:
+            "Height carries static and fades; FM moves the song into spacing, a limiter discards height, and with two stations on one channel the stronger one wins.",
+          visual:
+            "A road between a teal tower and a coral tower; a mustard car with Hertz aboard; a floating paper panel shows the wave at the car; an 'FM' tag; two mustard limiter plates; two signal-strength bars.",
+          motion:
+            "Entrance: towers rise, the car collects Hertz. Primary: the car drives away from the coral tower; the panel wave shrinks under fixed static, turns into FM, gets pressed flat by the plates. Secondary: bars cross at the midpoint and the wave snaps from coral to teal; Hertz's antenna ball changes colour. Exit: Hertz hops out.",
+          sound:
+            "Real receiver audio following the car: AM static rising, FM without then with the limiter, and the drums-to-pad capture snap. Engine burble, kick and shaker, a thump for the limiter, a click and chime at the snap.",
+          transition: "The road scene shrinks away and releases five tiles.",
+          name: "Consequence",
+          t0: 59.433,
+          t1: 77.052,
+          vo: "Drive away, and the wave shrinks, so static hides in its height. FM carries the song in the spacing instead. A limiter flattens every height, and when two stations share a channel, the radio locks onto the stronger one.",
+        },
+        {
+          purpose:
+            "The whole radio is one chain: pick one wave, move it to your filter, measure how it changes.",
+          visual:
+            "Five torn tiles joined by pencil arrows: antenna, × oscillator, filter window, detector, speaker. A mustard arc from mixer to filter.",
+          motion:
+            "Entrance: tiles fly out of the shrinking road scene. Primary: each tile lifts as the voice names its job. Secondary: speaker notes. Exit: tiles fly into Hertz's antenna, it glows, Hertz bows, the spotlight closes on the prompt.",
+          sound:
+            "The melody returns and resolves to C major; soft pops on each tile; a rising whoosh and chime as the tiles collapse.",
+          transition: "Spotlight closes to the blinking shell prompt.",
+          name: "Recap",
+          t0: 77.052,
+          t1: 89.543,
+          vo: "Pick one wave. Move it to your filter. Measure how it changes. That's a radio, built from numbers.",
+        },
+      ];
+      const board = document.getElementById("board");
+      const fmt = (t) => {
+        const m = Math.floor(t / 60),
+          s = t - m * 60;
+        return `${m}:${s.toFixed(1).padStart(4, "0")}`;
+      };
+      SCENES.forEach((s, i) => {
+        const el = document.createElement("article");
+        el.className = "scene";
+        el.innerHTML = `<button style="all:unset;cursor:pointer" aria-label="Play scene ${i + 1}"><img src="thumb-${i + 1}.jpg" alt="Frame from scene ${i + 1}: ${s.name}" loading="lazy"></button>
+  <div><div class="n"><b>${i + 1} · ${s.name}</b><code>${fmt(s.t0)} – ${fmt(s.t1)}</code></div>
+  <dl><dt>Teaches</dt><dd>${s.purpose}</dd><dt>Visual</dt><dd>${s.visual}</dd><dt>Motion</dt><dd>${s.motion}</dd>
+  <dt>Voiceover</dt><dd class="vo">${s.vo}</dd><dt>Sound</dt><dd>${s.sound}</dd><dt>Transition</dt><dd>${s.transition}</dd></dl></div>`;
+        el.querySelector("button").addEventListener("click", () => {
+          const v = document.getElementById("film");
+          v.currentTime = s.t0 + 0.05;
+          v.play().catch(() => {});
+          v.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+        board.appendChild(el);
+      });
+    </script>
+  </body>
+</html>
